@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belal El-Damaty | Portfolio</title>
+    <title>Bella Vista | Fine Dining Restaurant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
         
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23d4a574" width="1200" height="800"/><circle cx="200" cy="150" r="80" fill="%23c19660" opacity="0.3"/><circle cx="800" cy="300" r="120" fill="%23b8894d" opacity="0.2"/><circle cx="1000" cy="600" r="100" fill="%23c19660" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
         }
         
         .card-hover {
@@ -41,450 +41,620 @@
             transform: translateY(0);
         }
         
-        .typing-text {
-            border-right: 2px solid #667eea;
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { border-color: #667eea; }
-            51%, 100% { border-color: transparent; }
-        }
-        
-        .skill-bar {
-            width: 0%;
-            transition: width 2s ease-in-out;
-        }
-        
-        .skill-bar.animate {
-            width: var(--width);
-        }
-        
         .navbar-scrolled {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
         
-        .project-overlay {
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-            opacity: 0;
-            transition: all 0.3s ease;
+        .menu-item {
+            border-bottom: 1px dotted #d4a574;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         
-        .project-card:hover .project-overlay {
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .reservation-form {
+            background: linear-gradient(135deg, #d4a574 0%, #b8894d 100%);
+        }
+        
+        .star-rating {
+            color: #fbbf24;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .overlay {
+            background: linear-gradient(45deg, rgba(212, 165, 116, 0.9), rgba(184, 137, 77, 0.9));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .overlay {
             opacity: 1;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="font-inter">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 transition-all duration-300 py-4" id="navbar">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-white">Belal El-Damaty</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-white hover:text-blue-300 transition-colors">Home</a>
-                    <a href="#about" class="text-white hover:text-blue-300 transition-colors">About</a>
-                    <a href="#skills" class="text-white hover:text-blue-300 transition-colors">Skills</a>
-                    <a href="#projects" class="text-white hover:text-blue-300 transition-colors">Projects</a>
-                    <a href="#contact" class="text-white hover:text-blue-300 transition-colors">Contact</a>
+                <div class="text-3xl font-playfair font-bold text-white">
+                    <i class="fas fa-utensils text-yellow-400 mr-2"></i>
+                    Bella Vista
                 </div>
-                <button class="md:hidden text-white" id="mobile-menu-btn">
-                    <i class="fas fa-bars text-xl"></i>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-yellow-400 transition-colors font-medium">Home</a>
+                    <a href="#about" class="text-white hover:text-yellow-400 transition-colors font-medium">About</a>
+                    <a href="#menu" class="text-white hover:text-yellow-400 transition-colors font-medium">Menu</a>
+                    <a href="#gallery" class="text-white hover:text-yellow-400 transition-colors font-medium">Gallery</a>
+                    <a href="#reviews" class="text-white hover:text-yellow-400 transition-colors font-medium">Reviews</a>
+                    <a href="#contact" class="text-white hover:text-yellow-400 transition-colors font-medium">Contact</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#reservation" class="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 transition-all transform hover:scale-105">
+                        Reserve Table
+                    </a>
+                </div>
+                <button class="md:hidden text-white text-xl" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="fade-in">
-                <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-6xl">
-                    👨‍💻
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                    Hi, I'm <span class="typing-text" id="typed-name">John Doe</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-                    Full Stack Developer passionate about creating beautiful, functional web experiences
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#projects" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all transform hover:scale-105">
-                        View My Work
-                    </a>
-                    <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105">
-                        Get In Touch
-                    </a>
-                </div>
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white relative">
+        <div class="text-center max-w-4xl mx-auto px-6 fade-in">
+            <h1 class="font-playfair text-6xl md:text-8xl font-bold mb-6">
+                Bella Vista
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-yellow-100 max-w-2xl mx-auto">
+                Experience culinary excellence in an atmosphere of refined elegance
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#menu" class="bg-yellow-500 text-black px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 transition-all transform hover:scale-105">
+                    View Menu
+                </a>
+                <a href="#reservation" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black transition-all transform hover:scale-105">
+                    Make Reservation
+                </a>
             </div>
         </div>
         
         <!-- Floating elements -->
-        <div class="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-bounce"></div>
-        <div class="absolute bottom-20 right-10 w-16 h-16 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">About Me</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    I'm a passionate developer with 5+ years of experience creating digital solutions 
-                    that make a difference. I love turning complex problems into simple, elegant designs.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <h2 class="font-playfair text-5xl font-bold text-gray-800 mb-6">Our Story</h2>
+                    <div class="w-24 h-1 bg-yellow-500 mb-8"></div>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Since 1985, Bella Vista has been serving exceptional cuisine in the heart of the city. 
+                        Our passion for culinary excellence and commitment to using the finest ingredients 
+                        has made us a beloved destination for food enthusiasts.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Led by Chef Marco Antonio, our kitchen creates innovative dishes that blend traditional 
+                        techniques with modern flair, ensuring every meal is a memorable experience.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-yellow-600 mb-2">38+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-yellow-600 mb-2">50+</div>
+                            <div class="text-gray-600">Menu Items</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-yellow-600 mb-2">1000+</div>
+                            <div class="text-gray-600">Happy Customers</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="fade-in">
                     <div class="relative">
-                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-8xl shadow-2xl">
-                            🚀
+                        <div class="w-full h-96 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center text-8xl shadow-2xl">
+                            👨‍🍳
                         </div>
-                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-3xl animate-bounce">
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-500 rounded-full flex items-center justify-center text-4xl shadow-xl">
                             ⭐
                         </div>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-playfair text-5xl font-bold text-gray-800 mb-6">Our Menu</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Discover our carefully crafted dishes made with the finest ingredients
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Appetizers -->
                 <div class="fade-in">
-                    <h3 class="text-3xl font-semibold text-gray-800 mb-6">My Journey</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Started as a curious student learning HTML, I've evolved into a full-stack developer 
-                        who loves creating seamless user experiences. I specialize in modern web technologies 
-                        and always stay updated with the latest trends.
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="font-playfair text-3xl font-semibold text-gray-800 mb-8 text-center flex items-center justify-center">
+                            <i class="fas fa-leaf text-yellow-500 mr-3"></i>
+                            Appetizers
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Truffle Arancini</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$18</span>
+                                </div>
+                                <p class="text-gray-600">Crispy risotto balls with black truffle and parmesan</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Burrata Caprese</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$22</span>
+                                </div>
+                                <p class="text-gray-600">Fresh burrata with heirloom tomatoes and basil oil</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Tuna Tartare</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$26</span>
+                                </div>
+                                <p class="text-gray-600">Yellowfin tuna with avocado and citrus vinaigrette</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Oysters Rockefeller</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$24</span>
+                                </div>
+                                <p class="text-gray-600">Fresh oysters with spinach and herb butter</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Courses -->
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="font-playfair text-3xl font-semibold text-gray-800 mb-8 text-center flex items-center justify-center">
+                            <i class="fas fa-utensils text-yellow-500 mr-3"></i>
+                            Main Courses
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Wagyu Beef Tenderloin</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$65</span>
+                                </div>
+                                <p class="text-gray-600">8oz wagyu with roasted vegetables and red wine jus</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Pan-Seared Salmon</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$42</span>
+                                </div>
+                                <p class="text-gray-600">Atlantic salmon with lemon risotto and asparagus</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Lobster Ravioli</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$48</span>
+                                </div>
+                                <p class="text-gray-600">House-made pasta with lobster in saffron cream sauce</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Duck Confit</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$52</span>
+                                </div>
+                                <p class="text-gray-600">Slow-cooked duck leg with cherry gastrique</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="font-playfair text-3xl font-semibold text-gray-800 mb-8 text-center flex items-center justify-center">
+                            <i class="fas fa-birthday-cake text-yellow-500 mr-3"></i>
+                            Desserts
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Tiramisu</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$14</span>
+                                </div>
+                                <p class="text-gray-600">Classic Italian dessert with espresso and mascarpone</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Chocolate Soufflé</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$16</span>
+                                </div>
+                                <p class="text-gray-600">Warm chocolate soufflé with vanilla ice cream</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Crème Brûlée</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$12</span>
+                                </div>
+                                <p class="text-gray-600">Vanilla custard with caramelized sugar crust</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beverages -->
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="font-playfair text-3xl font-semibold text-gray-800 mb-8 text-center flex items-center justify-center">
+                            <i class="fas fa-wine-glass text-yellow-500 mr-3"></i>
+                            Wine & Beverages
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Champagne Dom Pérignon</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$280</span>
+                                </div>
+                                <p class="text-gray-600">Vintage 2012, France</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Barolo Brunate</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$95</span>
+                                </div>
+                                <p class="text-gray-600">2018, Piedmont, Italy</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-semibold text-lg text-gray-800">Craft Cocktails</h4>
+                                    <span class="text-yellow-600 font-bold text-lg">$16</span>
+                                </div>
+                                <p class="text-gray-600">House specialty cocktails made with premium spirits</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-playfair text-5xl font-bold text-gray-800 mb-6">Gallery</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600">A glimpse into our culinary artistry and elegant atmosphere</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item fade-in">
+                    <div class="h-64 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
+                        🍽️
+                        <div class="overlay absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-search-plus text-3xl mb-2"></i>
+                                <p class="font-semibold">Fine Dining</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="h-64 bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
+                        🥩
+                        <div class="overlay absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-search-plus text-3xl mb-2"></i>
+                                <p class="font-semibold">Premium Steaks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="h-64 bg-gradient-to-br from-blue-400 to-teal-500 rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
+                        🦞
+                        <div class="overlay absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-search-plus text-3xl mb-2"></i>
+                                <p class="font-semibold">Fresh Seafood</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="h-64 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
+                        🍷
+                        <div class="overlay absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-search-plus text-3xl mb-2"></i>
+                                <p class="font-semibold">Wine Collection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="h-64 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
+                        🥗
+                        <div class="overlay absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-search-plus text-3xl mb-2"></i>
+                                <p class="font-semibold">Fresh Salads</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <div class="h-64 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center text-6xl relative overflow-hidden">
+                        🍰
+                        <div class="overlay absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-search-plus text-3xl mb-2"></i>
+                                <p class="font-semibold">Desserts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-playfair text-5xl font-bold text-gray-800 mb-6">What Our Guests Say</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600">Testimonials from our valued customers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <div class="star-rating text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Absolutely incredible dining experience! The wagyu beef was cooked to perfection 
+                        and the service was impeccable. Will definitely be returning!"
                     </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        When I'm not coding, you can find me exploring new technologies, contributing to 
-                        open-source projects, or sharing knowledge with the developer community.
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-xl mr-4">
+                            👨
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Michael Johnson</div>
+                            <div class="text-gray-500 text-sm">Food Critic</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <div class="star-rating text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The ambiance is perfect for special occasions. The lobster ravioli was divine 
+                        and the wine selection is outstanding. Highly recommended!"
                     </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-xl mr-4">
+                            👩
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Sarah Williams</div>
+                            <div class="text-gray-500 text-sm">Regular Customer</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <div class="star-rating text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Chef Marco's creativity shines through every dish. The tasting menu was 
+                        a journey of flavors. This is fine dining at its best!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-xl mr-4">
+                            👨
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-800">David Chen</div>
+                            <div class="text-gray-500 text-sm">Chef</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-20 reservation-form">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-playfair text-5xl font-bold text-white mb-6">Make a Reservation</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
+                <p class="text-xl text-yellow-100">Book your table for an unforgettable dining experience</p>
+            </div>
+            
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl fade-in">
+                <form onsubmit="handleReservation(event)" class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Full Name</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" placeholder="Your Name" required>
+                    </div>
                     
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="text-center p-6 bg-blue-50 rounded-xl">
-                            <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
-                            <div class="text-gray-600">Projects</div>
-                        </div>
-                        <div class="text-center p-6 bg-purple-50 rounded-xl">
-                            <div class="text-3xl font-bold text-purple-600 mb-2">5+</div>
-                            <div class="text-gray-600">Years</div>
-                        </div>
-                        <div class="text-center p-6 bg-green-50 rounded-xl">
-                            <div class="text-3xl font-bold text-green-600 mb-2">100%</div>
-                            <div class="text-gray-600">Passion</div>
-                        </div>
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" placeholder="your@email.com" required>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Skills & Technologies</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
-                <p class="text-xl text-gray-600">Technologies I work with on a daily basis</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-8 flex items-center">
-                        <i class="fas fa-code text-blue-500 mr-3"></i>
-                        Frontend Development
-                    </h3>
-                    <div class="space-y-6">
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">HTML/CSS</span>
-                                <span class="text-gray-500">95%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full" style="--width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">JavaScript</span>
-                                <span class="text-gray-500">90%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-yellow-500 to-yellow-600 h-3 rounded-full" style="--width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">React</span>
-                                <span class="text-gray-500">85%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-cyan-500 to-cyan-600 h-3 rounded-full" style="--width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">Tailwind CSS</span>
-                                <span class="text-gray-500">88%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-teal-500 to-teal-600 h-3 rounded-full" style="--width: 88%"></div>
-                            </div>
-                        </div>
+                    
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Phone</label>
+                        <input type="tel" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" placeholder="+1 (555) 123-4567" required>
                     </div>
-                </div>
-                
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-8 flex items-center">
-                        <i class="fas fa-server text-green-500 mr-3"></i>
-                        Backend Development
-                    </h3>
-                    <div class="space-y-6">
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">Node.js</span>
-                                <span class="text-gray-500">80%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full" style="--width: 80%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">Python</span>
-                                <span class="text-gray-500">75%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-blue-600 to-blue-700 h-3 rounded-full" style="--width: 75%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">MongoDB</span>
-                                <span class="text-gray-500">70%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full" style="--width: 70%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="flex justify-between mb-3">
-                                <span class="text-gray-700 font-medium">Express.js</span>
-                                <span class="text-gray-500">82%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-gray-600 to-gray-700 h-3 rounded-full" style="--width: 82%"></div>
-                            </div>
-                        </div>
+                    
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Party Size</label>
+                        <select class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" required>
+                            <option value="">Select party size</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                            <option value="7">7 People</option>
+                            <option value="8">8+ People</option>
+                        </select>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Featured Projects</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
-                <p class="text-xl text-gray-600">Some of my recent work that I'm proud of</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in project-card relative">
-                    <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-6xl relative">
-                        🌐
-                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <i class="fas fa-external-link-alt text-2xl mb-2"></i>
-                                <p class="font-semibold">View Project</p>
-                            </div>
-                        </div>
+                    
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Date</label>
+                        <input type="date" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" required>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">E-Commerce Platform</h3>
-                        <p class="text-gray-600 mb-4">Full-stack e-commerce solution with React frontend and Node.js backend. Features include user authentication, payment processing, and admin dashboard.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">React</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium">Node.js</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium">MongoDB</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <button class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all">
-                                Live Demo
-                            </button>
-                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
-                                <i class="fab fa-github"></i>
-                            </button>
-                        </div>
+                    
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Time</label>
+                        <select class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" required>
+                            <option value="">Select time</option>
+                            <option value="17:00">5:00 PM</option>
+                            <option value="17:30">5:30 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="19:30">7:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="20:30">8:30 PM</option>
+                            <option value="21:00">9:00 PM</option>
+                        </select>
                     </div>
-                </div>
-                
-                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in project-card relative">
-                    <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-6xl relative">
-                        📱
-                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <i class="fas fa-external-link-alt text-2xl mb-2"></i>
-                                <p class="font-semibold">View Project</p>
-                            </div>
-                        </div>
+                    
+                    <div class="md:col-span-2">
+                        <label class="block text-white font-semibold mb-2">Special Requests</label>
+                        <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-yellow-400 focus:outline-none transition-all" placeholder="Any special requests or dietary restrictions..."></textarea>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Task Management App</h3>
-                        <p class="text-gray-600 mb-4">Modern task management application with drag-and-drop functionality, real-time updates, and team collaboration features.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium">Vue.js</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-medium">Firebase</span>
-                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm font-medium">Tailwind</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <button class="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:from-purple-600 hover:to-purple-700 transition-all">
-                                Live Demo
-                            </button>
-                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
-                                <i class="fab fa-github"></i>
-                            </button>
-                        </div>
+                    
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="bg-yellow-500 text-black px-12 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all transform hover:scale-105">
+                            Reserve Table
+                        </button>
                     </div>
-                </div>
-                
-                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in project-card relative">
-                    <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-6xl relative">
-                        📊
-                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <i class="fas fa-external-link-alt text-2xl mb-2"></i>
-                                <p class="font-semibold">View Project</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Analytics Dashboard</h3>
-                        <p class="text-gray-600 mb-4">Real-time analytics dashboard with interactive charts, data visualization, and comprehensive reporting features for business insights.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-medium">JavaScript</span>
-                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">Chart.js</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">API</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <button class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-2 px-4 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all">
-                                Live Demo
-                            </button>
-                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
-                                <i class="fab fa-github"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Get In Touch</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
-                <p class="text-xl text-gray-600">Let's work together on your next amazing project</p>
+                <h2 class="font-playfair text-5xl font-bold text-gray-800 mb-6">Contact Us</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600">Visit us or get in touch</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="fade-in">
-                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-2xl text-white">
-                        <h3 class="text-2xl font-semibold mb-8">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">Email</div>
-                                    <div class="text-blue-100">john.doe@example.com</div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-phone text-xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">Phone</div>
-                                    <div class="text-blue-100">+1 (555) 123-4567</div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-map-marker-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">Location</div>
-                                    <div class="text-blue-100">San Francisco, CA</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-semibold mb-4">Follow Me</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
-                                    <i class="fab fa-dribbble"></i>
-                                </a>
-                            </div>
-                        </div>
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-3xl text-white mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Location</h3>
+                    <p class="text-gray-600">
+                        123 Gourmet Street<br>
+                        Downtown District<br>
+                        New York, NY 10001
+                    </p>
                 </div>
                 
-                <div class="fade-in">
-                    <form class="bg-white p-8 rounded-2xl shadow-lg" onsubmit="handleSubmit(event)">
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Name</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Your Name" required>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Email</label>
-                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="your@email.com" required>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Subject</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Project Discussion" required>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Message</label>
-                                <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" placeholder="Tell me about your project..." required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-3xl text-white mx-auto mb-6">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Phone</h3>
+                    <p class="text-gray-600">
+                        Reservations: (555) 123-4567<br>
+                        General: (555) 123-4568<br>
+                        Events: (555) 123-4569
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-3xl text-white mx-auto mb-6">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Hours</h3>
+                    <p class="text-gray-600">
+                        Monday - Thursday: 5:00 PM - 10:00 PM<br>
+                        Friday - Saturday: 5:00 PM - 11:00 PM<br>
+                        Sunday: 4:00 PM - 9:00 PM
+                    </p>
                 </div>
             </div>
         </div>
@@ -492,27 +662,66 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center">
-                <div class="text-2xl font-bold mb-4">John Doe</div>
-                <p class="text-gray-400 mb-6">Full Stack Developer & Creative Problem Solver</p>
-                <div class="flex justify-center space-x-6 mb-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-dribbble text-xl"></i>
-                    </a>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-3xl font-playfair font-bold mb-4">
+                        <i class="fas fa-utensils text-yellow-400 mr-2"></i>
+                        Bella Vista
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Experience culinary excellence in an atmosphere of refined elegance.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-yelp text-xl"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-gray-400">
-                    © 2024 John Doe. All rights reserved.
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#menu" class="text-gray-400 hover:text-yellow-400 transition-colors">Menu</a></li>
+                        <li><a href="#reservation" class="text-gray-400 hover:text-yellow-400 transition-colors">Reservations</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-yellow-400 transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-yellow-400 transition-colors">Contact</a></li>
+                    </ul>
                 </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-400">Private Dining</span></li>
+                        <li><span class="text-gray-400">Catering</span></li>
+                        <li><span class="text-gray-400">Wine Tasting</span></li>
+                        <li><span class="text-gray-400">Special Events</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe for special offers and updates</p>
+                    <div class="flex">
+                        <input type="email" class="flex-1 px-4 py-2 rounded-l-lg bg-gray-700 text-white border-none focus:outline-none" placeholder="Your email">
+                        <button class="bg-yellow-500 text-black px-6 py-2 rounded-r-lg font-semibold hover:bg-yellow-400 transition-colors">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Bella Vista Restaurant. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -526,19 +735,23 @@
             if (window.scrollY > 50) {
                 navbar.classList.add('navbar-scrolled');
                 navLinks.forEach(link => {
-                    link.classList.remove('text-white');
-                    link.classList.add('text-gray-800');
+                    if (!link.classList.contains('bg-yellow-500')) {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-gray-800');
+                    }
                 });
             } else {
                 navbar.classList.remove('navbar-scrolled');
                 navLinks.forEach(link => {
-                    link.classList.remove('text-gray-800');
-                    link.classList.add('text-white');
+                    if (!link.classList.contains('bg-yellow-500')) {
+                        link.classList.remove('text-gray-800');
+                        link.classList.add('text-white');
+                    }
                 });
             }
         });
 
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -552,7 +765,7 @@
             });
         });
 
-        // Fade in animation on scroll
+        // Fade in animation
         function handleScrollAnimations() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(element => {
@@ -565,95 +778,37 @@
             });
         }
 
-        // Animate skill bars
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-bar');
-            skillBars.forEach(bar => {
-                const rect = bar.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    bar.classList.add('animate');
-                }
-            });
-        }
-
-        // Typing animation
-        function typeWriter() {
-            const texts = ['John Doe', 'Web Developer', 'UI/UX Designer', 'Problem Solver'];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            const typedElement = document.getElementById('typed-name');
-            
-            function type() {
-                const currentText = texts[textIndex];
-                
-                if (isDeleting) {
-                    typedElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typedElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-                
-                let typeSpeed = isDeleting ? 100 : 200;
-                
-                if (!isDeleting && charIndex === currentText.length) {
-                    typeSpeed = 2000;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    typeSpeed = 500;
-                }
-                
-                setTimeout(type, typeSpeed);
-            }
-            
-            type();
-        }
-
-        // Form submission
-        function handleSubmit(event) {
+        // Reservation form handler
+        function handleReservation(event) {
             event.preventDefault();
             
-            // Create success modal
             const modal = document.createElement('div');
             modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
             modal.innerHTML = `
                 <div class="bg-white p-8 rounded-2xl max-w-md mx-4 text-center">
-                    <div class="text-6xl mb-4">✅</div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Message Sent!</h3>
-                    <p class="text-gray-600 mb-6">Thank you for reaching out. I'll get back to you within 24 hours!</p>
+                    <div class="text-6xl mb-4">🎉</div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Reservation Confirmed!</h3>
+                    <p class="text-gray-600 mb-6">Thank you for choosing Bella Vista. We'll send you a confirmation email shortly with all the details.</p>
                     <button onclick="this.parentElement.parentElement.remove()" 
-                            class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
+                            class="bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-all">
                         Close
                     </button>
                 </div>
             `;
             document.body.appendChild(modal);
             
-            // Reset form
             event.target.reset();
         }
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             // Simple mobile menu implementation
-            const nav = document.querySelector('nav');
-            nav.classList.toggle('mobile-open');
+            alert('Mobile menu would open here');
         });
 
         // Initialize animations
-        window.addEventListener('scroll', () => {
-            handleScrollAnimations();
-            animateSkillBars();
-        });
-
-        // Initialize on load
-        window.addEventListener('load', () => {
-            handleScrollAnimations();
-            typeWriter();
-        });
+        window.addEventListener('scroll', handleScrollAnimations);
+        window.addEventListener('load', handleScrollAnimations);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e220eb233fe6f0',t:'MTc1NTAyNDMxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e23eac01fc8479',t:'MTc1NTAyNTUzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
