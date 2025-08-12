@@ -1,144 +1,87 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@16display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+*{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0;
+    margin: 0;
 }
-
-body {
-    font-family: Arial, sans-serif;
-}
-a {
+a{
+    color: white;
     text-decoration: none;
-    color: #ffffff;
 }
-ul {
-    list-style: none;
-}
-.btn-primary {
-  border: 1px solid #fff;
-}
-
-.btn-secondary,
-.btn-third:hover {
-  background: #383848;
-}
-
-.btn-primary:hover,
-.btn-secondary:hover,
-.btn-third {
-  background: #e4b95b;
-}
-.primary-text {
-  color: #e4b95b;
-}
-/* Header Start */
-header {
+body{
+    background-image: linear-gradient(to right, #01022d ,#000);
     height: 100vh;
-    background: url("cars/CAR-1\ \(17\).jpg") center center/cover no-repeat;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#navpar {
+.contanier{
+    background-image: 
+    linear-gradient(to right, #01022de5 30%, #0000008c),
+    url(avatar.webp);
+    background-position: center;
+    width: 90%;
+    height: 640px;
+}
+.contanier:hover{
+    background-image: 
+    linear-gradient(to right, #01022de5 30%, transparent),
+    url(avatar.webp)
+    ;
+    width: 90%;
+    height: 650px;
+}
+header{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 100px;
-    width: 100%;
+    align-items: center;padding: 10px;
 }
-header .logo {
-    color: #e4b95b;
-    width: 60px;
-    font-size: 25px;
-    font-weight: 600;
-    margin-left: 120px;
-}
-nav ul {
-     display: flex;
-  margin-right: 100px;
-}
-nav ul li a {
-    padding: 15px 20px;
-    font-weight: 600;
-}
-nav ul li a:hover{
-    border-bottom: 2px solid #e4b95b;
-}
-header .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 75%; /* Add exmple of greeen background */
-}
-header .content h1 {
-  font-size: 50px;
-  color: #fff;
-}
-header .content h1 span {
-    color: #e4b95b;
-    font-size: 60px;
-}
-header .content h3 {
-    color: #f5f5dc;
+.logo{
+    color: white;
     font-size: 30px;
-    margin-top: 15px;
+    text-decoration: none;
 }
-header .content p {
-  color: #e4b95b;
-  margin: 20px 0 40px;
-  font-size: 20px;
+ul{
+    width: 60%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
 }
-
-header * {
-  z-index: 10;
-}
-.btn {
-  display: inline-block;
-  padding: 15px 30px;
-  border: 2px solid #197896c2;
-  border-radius: 15px;
-  cursor: pointer;
-}
-header .content .btn {
-    
-}
-/* Header End */
-/* About Start */
-#about {
-  height: 80vh;
-  background: #a08787;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#about title {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-#about h2 {
-    color: #383848;
-    font-size: 60px;
+ul a{
+    border-bottom: 2px solid transparent;
     font-weight: 600;
-    margin-top: 4rem;
-    display: flex;
-    text-align: center;
-    justify-content: center;
 }
-#about p {
-    color: #e4b95b;
-    font-size: 18px;
-    letter-spacing: 1px;
-    display: flex;
-    line-height: 1.6;
-    width: 600px;
+ul a:hover{
+    border-bottom-color: #bd5050;
 }
-#about img {
-  max-width: 300px;
+.content{
+    width: 50%;
+    margin-top: 50px;
+    padding: 30px;
 }
-#about .about-content a {
-  margin-top: 2rem;
+.content h2{
+    color: #bd5050;
+    font-size: 90px;
+    font-weight: 600;
 }
-
+.content p{
+    color: white;
+    width: 350px;
+    padding: 6px 0px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    line-height: 20px;
+}
+.content button{
+    font-size: 30px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.content button:hover{
+    background-color: transparent;
+    border-color: white;
+    color: white;
+}
